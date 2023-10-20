@@ -64,23 +64,27 @@ public class BirthdayExample {
      * complete the
      * extra credit module on Files, Directories, and Folders in Canvas.
      */
-    String pathToFile = "C:/Users/ebonyhargro/lupitasBirthdayLookup/demo/src/main/java/com/example/birthday.json";
+    String pathToFile = "/Users/ebonyhargro/lupitasBirthdayLookup/demo/src/main/java/com/example/birthday.json";
 
     // students should change the code below in order to implment their own solution
 
     // initialize the hash map
     initializeMap(pathToFile);
 
-    // read user input from keyboard
-    System.out.println("Reading user input into a string");
-
     // get user input
     Scanner input = new Scanner(System.in);
-    System.out.print("Enter a name:");
-    String name = input.nextLine();
+    System.out.print("Enter a name and I'll tell you their birthday:");
+    String name = input.nextLine().trim();
 
-    // print user input
-    System.out.println("name = " + name);
+    // get name from birthday json
+    String birthday = birthdayMap.get(name);
+
+    // check for matching birthday and print out appropriate result
+    if (birthday != null) {
+      System.out.println("Birthday of" + name + ":" + birthday);
+    } else {
+      System.out.println("No birthday found for " + name);
+    }
 
     // close the scanner
     input.close();
